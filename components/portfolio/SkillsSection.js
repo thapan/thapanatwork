@@ -113,7 +113,7 @@ export default function SkillsSection() {
                 ]
               },
               {
-                title: "Network/WLAN Test",
+                title: "Wi-Fi/Mesh & Performance",
                 items: [
                   { label: "Wireshark", url: "https://www.wireshark.org" },
                   { label: "Omnipeek", url: "https://www.liveaction.com/products/omnipeek/" },
@@ -121,7 +121,11 @@ export default function SkillsSection() {
                   { label: "IxChariot", url: "https://www.keysight.com/us/en/products/network-test/ixchariot.html" },
                   { label: "IxNetwork", url: "https://www.keysight.com/us/en/products/network-test/ixnetwork.html" },
                   { label: "Iperf", url: "https://iperf.fr" },
-                  { label: "Spirent", url: "https://www.spirent.com" }
+                  { label: "Spirent", url: "https://www.spirent.com" },
+                  { label: "tcpdump", url: "https://www.tcpdump.org" },
+                  { label: "Mesh testbeds" },
+                  { label: "Performance regression suites" },
+                  { label: "Interop labs" }
                 ]
               },
               {
@@ -135,7 +139,18 @@ export default function SkillsSection() {
                 title: "Terminals & Utilities",
                 items: [
                   { label: "Tera Term", url: "https://osdn.net/projects/ttssh2/releases/" },
-                  { label: "PuTTY", url: "https://www.putty.org" }
+                  { label: "PuTTY", url: "https://www.putty.org" },
+                  { label: "CLI/SSH debug" }
+                ]
+              },
+              {
+                title: "App/Web/Playback QA",
+                items: [
+                  { label: "Selenium", url: "https://www.selenium.dev" },
+                  { label: "API testing", url: "https://restfulapi.net" },
+                  { label: "Playback/streaming labs" },
+                  { label: "iOS/Android/Web regressions" },
+                  { label: "Living room/Fire TV validation" }
                 ]
               },
               {
@@ -154,6 +169,16 @@ export default function SkillsSection() {
                   { label: "Pandas", url: "https://pandas.pydata.org" },
                   { label: "scikit-learn", url: "https://scikit-learn.org" },
                   { label: "REST APIs", url: "https://restfulapi.net" }
+                ]
+              },
+              {
+                title: "AI Assistants",
+                items: [
+                  { label: "Amazon Q" },
+                  { label: "Prompt engineering" },
+                  { label: "AI code assistants" },
+                  { label: "AI test case generation" },
+                  { label: "LLM-integrated tools" }
                 ]
               }
             ].map((group, idx) => (

@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, FileText, Send } from 'lucide-react';
 
 export default function ContactSection() {
+  const [jdText, setJdText] = useState('');
+  const [analysis, setAnalysis] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const analyzeJd = () => {
+    setLoading(true);
+    const text = jdText.toLowerCase();
+    const keywords = [
+      // Core QA/automation
+      "automation", "framework", "python", "perl", "bash", "jenkins", "ci", "regression", "test plan", "test cases", "nightly",
+      "selenium", "api", "ui automation", "api automation", "soapui", "playback", "streaming", "prime video",
+      "ios", "android", "web", "living room", "fire tv", "mobile testing",
+      // Wi-Fi / networking
+      "wlan", "wifi", "wireless", "mesh", "gateway", "ethernet", "performance", "interop", "characterization",
+      "rvr", "max client", "captures", "sniffer", "debug", "triage", "reproduce", "customer issues",
+      // Protocols / stacks
+      "11ax", "11be", "802.11", "ble", "bluetooth", "thread", "osi", "l2", "l3", "l7",
+      // Tooling / infra
+      "aws", "docker", "jira", "ota", "router", "lab", "testbed", "stress", "stability",
+      // Domains
+      "voice", "alexa", "ml", "data", "analytics", "real-time", "hw", "hardware", "sw", "software"
+    ];
+    const matched = keywords.filter(k => text.includes(k));
+    const missing = keywords.filter(k => !text.includes(k));
+    const score = Math.max(20, Math.min(100, Math.round((matched.length / keywords.length) * 100)));
+
+    setAnalysis({
+      score,
+      matched,
+      missing: missing.slice(0, 8),
+      summary: `Approximate fit: ${score}% based on detected keywords. Prioritize matching must-haves: ${matched.slice(0, 4).join(', ') || 'add role keywords'}.`,
+      atsResume: `PROFILE: QA/Automation lead with WLAN/Wi-Fi depth (mesh, gateways), performance/interop testbeds, and automation frameworks.\n` +
+        `TOOLS: Python, Perl, Bash, Jenkins/CI, Jira, Wireshark/Omnipeek captures, Ixia IxLoad/IxChariot, RF attenuators/shield boxes, AWS, Docker.\n` +
+        `HIGHLIGHTS: Fire TV connectivity sign-off; max-client/RVR/voice (Alexa) validations; nightly regression and performance suites; multi-client farm automation; ML crash predictor; OTA CLI; Auto Jira.\n` +
+        `EXPERIENCE: Qualcomm WLAN QA (chipset releases, stability, captures); Amazon Fire TV (launch leadership, automation, router UI tooling); CDAC ESD.\n` +
+        `KEYWORDS MATCHED: ${matched.join(', ') || 'Add role-specific skills'}.`
+    });
+    setTimeout(() => setLoading(false), 300);
+  };
+
   return (
     <section id="contact" className="py-32 px-6 relative">
       <div className="max-w-4xl mx-auto text-center">
@@ -78,6 +118,7 @@ export default function ContactSection() {
             <span className="text-gray-400">Open to new opportunities</span>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
