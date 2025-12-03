@@ -4,29 +4,25 @@ import { Cpu, Bug, Zap, Award, Wifi, Wrench } from 'lucide-react';
 
 const stats = [
   {
-    icon: Award,
-    value: "10+",
-    label: "Launch leadership",
-    description: "Launched Fire TV sticks/cubes/remotes/hotspot/Smart TVs and Echo Studio; QCA Beeliner/Dakota/ath10k chipsets"
-  },
-  {
-    icon: Zap,
-    value: "60%",
-    label: "Automation impact",
-    description: "Automated end-to-end test cases and stabilized multiple frameworks"
-  },
-  {
-    icon: Wifi,
-    value: "1000s",
-    label: "Testing",
-    description: "Written and executed thousands of end-to-end cases across max-client, RVR, voice/Alexa, and regression"
-  },
-  {
-    icon: Wrench,
-    value: "25+",
-    label: "Tooling built",
-    description: "ML crash predictor, build-diff detector, multi-client farm automation, lab booking & ZTP, Auto Jira, OTA CLI, and day-to-day scripts"
-  }
+  icon: Award,
+  value: "10+",
+  label: "Product Launches"
+},
+{
+  icon: Cpu,
+  value: "100%",
+  label: "Automation Expertise"
+},
+{
+  icon: Zap,
+  value: "50k+",
+  label: "Tests Executed"
+},
+{
+  icon: Wrench,
+  value: "25+",
+  label: "Tools & Frameworks Built"
+}
 ];
 
 export default function StatsSection() {

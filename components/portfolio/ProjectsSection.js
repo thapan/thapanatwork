@@ -6,127 +6,213 @@ import ProjectCard from './ProjectCard';
 const fireTvImage = new URL('../../assets/fire-tv-stick-4k.png', import.meta.url).href;
 
 const qualcommProjects = [
+
+  /*
+  -------------------------------------------------------------------
+  1. Wireless Debug & RF Analysis
+  -------------------------------------------------------------------
+  */
+
   {
-    title: "ML-Driven Test Prioritization",
-    period: "2016-2017",
-    summary: "Implemented a supervised machine learning model to intelligently prioritize crash-heavy tests for faster regression detection.",
-    tech: ["ML", "Python", "Automation", "Sanity"],
-    problem: "With thousands of test cases, running full regression took too long, missing critical crash issues.",
-    solution: "Built a supervised ML model analyzing historical crash data, test failure patterns, and code change impact to prioritize high-risk test cases.",
-    impact: "Detected 85% of crash issues in first 20% of test execution, dramatically reducing time-to-detection.",
+    title: "Wireless Debug & RF Analysis",
+    role: "Role: RF validation & packet analysis lead",
+    summary:
+      "Built controlled RF environments and packet-level debugging workflows to diagnose roaming, RVR, and sensitivity issues across Wi-Fi platforms.",
+    
+    tech: ["WLAN", "RF", "RVR", "802.11", "Sniffer", "Debugging"],
+
+    problem:
+      "Roaming failures and RF sensitivity issues were difficult to reproduce due to inconsistent open-air conditions and limited packet-level visibility.",
+
+    solution:
+      "Designed controlled RF chambers with programmable attenuators for accurate RVR sweeps and standardized sniffer capture/playback with automated packet analysis scripts.",
+
+    impact:
+      "Achieved 99% reproducibility, identified 25+ RF regressions early, and reduced triage time from 2 days to 4 hours.",
+
     hasDemo: true,
-    demoType: "ml-prioritization",
-    metrics: [
-      { value: "85%", label: "Early Detection" },
-      { value: "5x", label: "Faster Triage" },
-      { value: "10K+", label: "Tests Analyzed" },
-      { value: "60%", label: "Time Saved" }
+
+    details: [
+      {
+        title: "Wi-Fi Dual-Client Sanity Testbed",
+        description:
+          "Owned multiple dual-client open-air testbeds validating wireless modes, security, and throughput across Qualcomm Wi-Fi platforms.",
+        demoType: "dual-client"
+      },
+      {
+        title: "RF Environment & RVR Testing",
+        description:
+          "Built shield-box based setups with attenuators for precise RVR/throughput validation across 2.4/5 GHz bands.",
+        demoType: "rvr-test"
+      },
+      {
+        title: "Sniffer & Packet Analysis Automation",
+        description:
+          "Script-driven packet capture, filtering, and correlation to debug roaming and handoff defects rapidly.",
+        demoType: "sniffer-analysis"
+      }
     ]
   },
+
+  /*
+  -------------------------------------------------------------------
+  2. Automation & ML-Driven Test Prioritization
+  -------------------------------------------------------------------
+  */
+
   {
-    title: "Max-Client Stress Test Environment",
-    period: "2016-2018",
-    summary: "Designed and operated a 150+ device stress testing environment to validate WLAN chipset stability under extreme load.",
-    tech: ["WLAN", "SNS", "Automation", "Chipsets"],
-    problem: "Real-world deployments with hundreds of clients exposed stability issues not caught in standard testing.",
-    solution: "Built a dedicated stress test lab with 150+ devices, automated client connection cycling, and continuous throughput monitoring.",
-    impact: "Identified and resolved 40+ critical stability bugs before production, achieving 99.9% uptime in customer deployments.",
+    title: "Automation & ML-Driven Test Prioritization",
+    role: "Role: Automation + ML framework developer",
+    summary:
+      "Accelerated regression cycles by combining ML-based test ranking with expanded WLAN sanity automation.",
+    
+    tech: ["ML", "Python", "Perl", "Automation", "WLAN"],
+
+    problem:
+      "Full regression cycles across thousands of tests slowed down detection of crash-heavy issues and consumed excessive engineering time.",
+
+    solution:
+      "Developed supervised ML ranking using crash history + code deltas; enhanced Perl WLAN sanity automation with intelligent retries and stability/throughput coverage.",
+
+    impact:
+      "Caught 85% of crash issues in the first 20% of executions and reduced total cycle time by 60% while tripling effective coverage.",
+
     hasDemo: true,
-    demoType: "stress-test",
-    metrics: [
-      { value: "150+", label: "Devices" },
-      { value: "99.9%", label: "Uptime" },
-      { value: "40+", label: "Bugs Found" },
-      { value: "24/7", label: "Monitoring" }
+
+    details: [
+      {
+        title: "ML-Driven Test Ranking",
+        description:
+          "Supervised model predicting crash-prone tests using historical data and code change patterns.",
+        demoType: "ml-prioritization"
+      },
+      {
+        title: "WLAN Sanity Automation",
+        description:
+          "Built Perl automation for throughput/stability sanity with retries and structured reporting across multiple Wi-Fi platforms."
+      }
     ]
   },
+
+  /*
+  -------------------------------------------------------------------
+  3. Customer-Grade Stress & Reliability Testing
+  -------------------------------------------------------------------
+  */
+
   {
-    title: "RF Environment & RVR Testing",
-    period: "2015-2018",
-    summary: "Established RF testing infrastructure including shield boxes, RVR setups, and attenuators for precise wireless validation.",
-    tech: ["RF", "RVR", "Shield Box", "WLAN"],
-    problem: "Inconsistent RF environments led to non-reproducible test results and missed sensitivity issues.",
-    solution: "Set up isolated RF chambers with programmable attenuators for precise Rate vs Range (RVR) testing across all frequency bands.",
-    impact: "Achieved 99% test reproducibility and caught 25+ RF sensitivity regressions across chipset generations.",
+    title: "Customer-Grade Stress & Reliability Testing",
+    role: "Role: Stress lab & reliability testing owner",
+    summary:
+      "Ran large-scale device farms and voice/Wi-Fi stress scenarios to mirror real customer environments and expose long-duration reliability issues.",
+    
+    tech: ["Automation", "WLAN", "Voice", "SNS", "Power Line", "PLC"],
+
+    problem:
+      "Customer-like loads and voice interactions exposed issues that standard functional or regression suites failed to detect early.",
+
+    solution:
+      "Built a 150+ device stress lab with automated cycles; layered Alexa-style voice/Wi-Fi scenarios; added PLC throughput validation under varied noise.",
+
+    impact:
+      "Delivered 99.9% lab uptime, 99.5% voice reliability, and uncovered 40+ critical regressions before production.",
+
     hasDemo: true,
-    demoType: "rvr-test",
-    metrics: [
-      { value: "99%", label: "Reproducibility" },
-      { value: "25+", label: "Regressions Caught" },
-      { value: "6", label: "RF Chambers" },
-      { value: "All", label: "Bands Covered" }
+   
+    details: [
+      {
+        title: "Max-Client Stress Environment",
+        description:
+          "150+ device orchestrated lab performing automated connect/disconnect cycles, throughput sweeps, and long-duration stability checks.",
+         demoType: "stress-test",
+      },
+      {
+        title: "Alexa-Grade Wi-Fi Stress Testing",
+        description:
+          "Low-latency voice command loops under congestion/interference to validate real-world responsiveness.",
+      },
+      {
+        title: "Power Line Communication (PLC) Testing",
+        description:
+          "Throughput/stability validation over PLC links with noise simulation and long-duration monitoring.",
+      }
     ]
   },
+
+  /*
+  -------------------------------------------------------------------
+  4. Platform Bring-up & Launch Leadership
+  -------------------------------------------------------------------
+  */
+
   {
-    title: "WLAN Sanity Automation Framework",
-    period: "2015-2016",
-    summary: "Built comprehensive Perl automation for WLAN sanity testing including throughput modes, stability checks, and regression testing.",
-    tech: ["Perl", "WLAN", "Automation", "802.11"],
-    problem: "Manual WLAN testing was time-consuming and error-prone, causing delays in chipset release cycles.",
-    solution: "Developed a Perl-based automation framework handling sanity testing across multiple throughput modes with intelligent retry logic and detailed reporting.",
-    impact: "Reduced test cycle time by 60% and improved test coverage by 3x across Beeliner, Dakota, and ath10k platforms.",
-    flow: ["Test Config", "Device Setup", "Execute Tests", "Analyze Results", "Generate Report"]
-  },
-  {
-    title: "Wi-Fi Sniffer & Packet Analysis",
-    period: "2016-2018",
-    summary: "Expert-level debugging using Wi-Fi sniffer captures for packet-level analysis of complex connectivity issues.",
-    tech: ["Sniffer", "802.11", "Debugging", "WLAN"],
-    problem: "Complex roaming and handoff issues were difficult to diagnose without deep packet inspection.",
-    solution: "Implemented systematic sniffer capture workflows with automated packet analysis scripts for fast root cause identification.",
-    impact: "Reduced average debug time from 2 days to 4 hours for complex connectivity issues.",
-    flow: ["Capture Setup", "Issue Reproduce", "Packet Analysis", "Root Cause", "Fix Verify"]
-  },
-  {
-    title: "Chipset Bring-up to Release (Dakota)",
-    period: "2017-2018",
-    summary: "Owned complete validation lifecycle from prototype bring-up through production release for Dakota chipset platform.",
-    tech: ["Chipsets", "Sanity", "Automation", "WLAN"],
-    problem: "New chipset platforms required coordinated validation across multiple teams with tight deadlines.",
-    solution: "Led end-to-end validation including test plan development, automation creation, and cross-functional coordination.",
-    impact: "Delivered Dakota platform on schedule with zero critical escapes, earning multiple appreciation certificates.",
-    flow: ["Bring-up", "Feature Val", "Stability", "Perf Test", "Release Sign-off"]
-  },
-  {
-    title: "Alexa Wi-Fi Stress Testing",
-    period: "2017-2018",
-    summary: "Specialized stress testing for Amazon Alexa integration ensuring reliable voice commands over Wi-Fi.",
-    tech: ["WLAN", "SNS", "Automation", "Sanity"],
-    problem: "Voice assistant reliability depended on consistent low-latency Wi-Fi connectivity under various conditions.",
-    solution: "Developed targeted stress scenarios simulating real home environments with network congestion and interference.",
-    impact: "Validated 99.5% voice command reliability under stress, contributing to successful Alexa integration.",
-    flow: ["Network Stress", "Voice Commands", "Latency Check", "Reliability Score"]
+    title: "Platform Bring-up & Launch Leadership",
+    role: "Role: Sanity/bring-up lead & release execution owner",
+    summary:
+      "Led daily sanity, chipset bring-up, and release execution across Qualcomm Wi-Fi 5 and Wi-Fi 6 platforms, ensuring stable builds for downstream teams.",
+    
+    tech: [
+      "Sanity Validation",
+      "Daily Build Verification",
+      "Regression Testing",
+      "WLAN",
+      "Wi-Fi 5 (11ac)",
+      "Wi-Fi 6 (11ax)",
+      "Chipset Bring-up",
+      "Release Management",
+      "Cross-Functional Coordination"
+    ],
+
+    problem:
+      "Daily builds across Wi-Fi platforms often arrived unstable, delaying functional teams and causing unpredictable test cycles due to fragmented early validation.",
+
+    solution:
+      "Established consistent sanity validation workflows with automated checks, standardized regression cycles, clear bug bars, and cross-team quality gates. Led daily triage and ensured stable, test-ready builds went to all downstream teams.",
+
+    impact:
+      "Significantly reduced build blockers, improved stability, accelerated functional team productivity, and delivered multiple chipset releases with zero critical escapes.",
+
+    details: [
+      {
+        title: "Wi-Fi 5 (11ac) — Sanity & Regression Leadership",
+        description:
+          "Owned daily sanity cycles; unified planning; automated critical flows; ensured stable weekly drops for functional teams."
+      },
+      {
+        title: "Wi-Fi 6 (11ax) — Platform Bring-up Execution",
+        description:
+          "Drove end-to-end bring-up and release workflows: validation strategy, automation, bug bar ownership, and readiness gates."
+      }
+    ]
   }
 ];
 
 const amazonProjects = [
   {
-    title: "Leadership: FTV Launch & Quality Assurance",
+    title: "Fire TV launches: connectivity owner",
     period: "2018-2019",
-    summary: "Launch owner for Fire TV sticks/cubes—drove Wi-Fi/BT/BLE/CoEx quality, OOBE/FFS readiness, and Live TV validation with leadership alignment.",
+    summary: "Connectivity launch owner for sticks/cubes—Wi-Fi/BT/BLE/CoEx quality, OOBE/FFS readiness, Live TV validation.",
     tech: ["Wi-Fi", "BT", "BLE", "CoEx", "FFS", "Live TV", "Frank", "Dektec"],
-    problem: "Connectivity regressions and Live TV setup risks could delay launches without clear ownership and coverage.",
-    solution: "Owned daily launch triage and sign-offs; ran Wi-Fi/BT/BLE/CoEx regressions, OOBE/FFS readiness, and end-to-end Frank/Dektec Live TV validation across bands and regions.",
-    impact: "On-time launches with stable connectivity KPIs, smoother onboarding via FFS, and higher Live TV setup success.",
+    problem: "Connectivity regressions and Live TV setup risks could delay launches.",
+    solution: "Daily triage/sign-offs; Wi-Fi/BT/BLE/CoEx regressions; OOBE/FFS readiness; Frank/Dektec Live TV validation.",
+    impact: "On-time launches; stable connectivity KPIs; higher Live TV setup success.",
     listStyle: "ordered",
     link: "https://www.amazon.com/dp/B08XVYZ1Y5/ref=tsm_1_fb_lk?th=1",
     imageUrl: fireTvImage,
     flow: [
-      "Fire TV stick/cube launch coverage (Tank, Mantis, Stark, Raven)",
-      "Wi-Fi/BT/BLE/CoEx regressions + OOBE/FFS flows",
-      "Live TV (Frank/Dektec) setup validation",
-      "Daily status + leadership comms",
-      "Release gates and sign-off"
+      "Coverage: FTV Stick, Cubes, Remotes",
+      "FTV Regression for Wi-Fi/BT/BLE/CoEx",
+      "Daily status, gates, sign-off"
     ]
   },
   {
-    title: "Automation: Remotes & Routers",
+    title: "Automation: remotes & routers",
     period: "2018-2019",
-    summary: "Built automation for remote latency and router UI to accelerate connectivity sign-offs.",
+    summary: "Arduino remote-latency rig + scripted router UI (TP-Link, Netgear) to accelerate connectivity sign-offs.",
     tech: ["Automation", "Arduino", "Routers"],
     problem: "Manual remote latency and router reconfig slowed test cycles and risked inconsistency.",
-    solution: "Arduino rig for Snow/Lindberg remotes; scripted router UI (TP-Link, Netgear, etc.) for rapid topology changes.",
-    impact: "Release gating on latency KPIs and faster multi-router coverage.",
+    solution: "Arduino rig for Snow/Lindberg remotes; scripted router UI for rapid topology changes.",
+    impact: "Release gating on latency KPIs; faster multi-router coverage.",
     hasDemo: true,
     demoType: "remote-router",
     listStyle: "ordered",
@@ -138,13 +224,13 @@ const amazonProjects = [
     ]
   },
   {
-    title: "Lab Work: RF Stewardship & Booking",
+    title: "RF lab stewardship & booking",
     period: "2018-2019",
-    summary: "Ran RF labs, RVR/perf/stress setups, and built a booking tool to avoid conflicts and maximize utilization.",
+    summary: "RF lab ops with RVR/perf/stress setups + booking tool to avoid conflicts and maximize utilization.",
     tech: ["RF", "RVR", "Perf", "Stress", "Scheduling"],
     problem: "Shared labs caused conflicts and inconsistent environments for reproducible connectivity testing.",
-    solution: "Maintained shield rooms/RF boxes, calibrated RVR/perf/stress rigs, and built a lab booking tool with conflict checks.",
-    impact: "Higher lab throughput and reproducible results for connectivity runs.",
+    solution: "Maintained shield rooms/RF boxes, calibrated rigs, built booking tool with conflict checks.",
+    impact: "Higher lab throughput and reproducible runs.",
     hasDemo: true,
     demoType: "lab-ops",
     listStyle: "ordered",

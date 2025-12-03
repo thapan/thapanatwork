@@ -142,6 +142,15 @@ export default function Layout({ children }) {
       <main>
         {children}
       </main>
+
+      {/* Floating contact button */}
+      <Button
+        onClick={() => handleNavClick('#contact')}
+        className="fixed bottom-6 right-6 z-40 bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/30 px-4 py-3 rounded-full hidden sm:inline-flex items-center gap-2"
+      >
+        <Mail className="w-4 h-4" />
+        Contact
+      </Button>
     </div>
   );
 }

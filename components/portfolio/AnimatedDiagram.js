@@ -168,6 +168,193 @@ function MLPrioritizationDemo() {
   );
 }
 
+// Dual-Client Sanity Testbed Animation
+function DualClientSanityDemo() {
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setTick(t => t + 1), 1400);
+    return () => clearInterval(interval);
+  }, []);
+
+  const channels = ["2.4G", "5G"];
+  const channel = channels[tick % channels.length];
+  const throughputA = 120 + Math.sin(tick) * 15;
+  const throughputB = 105 + Math.cos(tick * 1.2) * 18;
+  const stability = 99.2 + Math.sin(tick * 0.5) * 0.3;
+
+  return (
+    <div className="p-6 rounded-xl bg-gray-900/50 border border-purple-500/20">
+      <div className="flex items-center gap-2 mb-4">
+        <Wifi className="w-5 h-5 text-purple-400" />
+        <span className="text-purple-200 font-semibold text-sm">Wi-Fi Dual-Client Sanity</span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        {["Client A", "Client B"].map((label, idx) => {
+          const throughput = idx === 0 ? throughputA : throughputB;
+          return (
+            <motion.div
+              key={label}
+              animate={{ borderColor: 'rgba(168, 85, 247, 0.4)', scale: 1 + (tick % 2 === idx ? 0.02 : 0) }}
+              className="p-3 rounded-lg bg-gray-800/60 border border-gray-700/60"
+            >
+              <div className="flex items-center justify-between text-xs text-gray-300 mb-2">
+                <span>{label}</span>
+                <span className="font-mono text-purple-300">{channel}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between text-[11px] text-gray-400">
+                    <span>Throughput</span>
+                    <span className="text-emerald-300 font-mono">{throughput.toFixed(0)} Mbps</span>
+                  </div>
+                  <div className="mt-1 h-2 rounded-full bg-gray-700 overflow-hidden">
+                    <motion.div
+                      animate={{ width: `${Math.min(100, throughput / 2)}%` }}
+                      className="h-full bg-gradient-to-r from-purple-400 to-emerald-400"
+                    />
+                  </div>
+                </div>
+                <div className="px-2 py-1 rounded bg-gray-900/70 border border-gray-700 text-[10px] text-gray-300">
+                  Mode<br /><span className="font-mono text-purple-300">11n/ac</span>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 text-xs text-gray-300">
+        <div className="p-3 rounded-lg bg-gray-800/60 border border-gray-700/60 text-center">
+          <div className="text-[11px] text-gray-400 mb-1">Security</div>
+          <div className="font-mono text-purple-200">WPA2/WPA3</div>
+        </div>
+        <div className="p-3 rounded-lg bg-gray-800/60 border border-gray-700/60 text-center">
+          <div className="text-[11px] text-gray-400 mb-1">Stability</div>
+          <div className="font-mono text-emerald-200">{stability.toFixed(1)}%</div>
+        </div>
+        <div className="p-3 rounded-lg bg-gray-800/60 border border-gray-700/60 text-center">
+          <div className="text-[11px] text-gray-400 mb-1">Client Swap</div>
+          <div className="font-mono text-blue-200">{channel}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Sniffer & Packet Analysis Animation
+function SnifferAnalysisDemo() {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setStep(s => (s + 1) % 4), 1600);
+    return () => clearInterval(interval);
+  }, []);
+
+  const colorMap = {
+    blue: 'rgb(96, 165, 250)',
+    purple: 'rgb(192, 132, 252)',
+    amber: 'rgb(251, 191, 36)',
+    emerald: 'rgb(52, 211, 153)',
+  };
+
+  const phases = [
+    { label: "Capture", color: "blue", icon: <Wifi className="w-4 h-4" /> },
+    { label: "Analyze", color: "purple", icon: <Brain className="w-4 h-4" /> },
+    { label: "Root Cause", color: "amber", icon: <Target className="w-4 h-4" /> },
+    { label: "Fix Verify", color: "emerald", icon: <CheckCircle2 className="w-4 h-4" /> },
+  ];
+
+  const packets = [
+    { id: "Auth", status: "ok", jitter: 12 },
+    { id: "Roam", status: "warn", jitter: 45 },
+    { id: "Assoc", status: "ok", jitter: 18 },
+    { id: "Data", status: "fail", jitter: 72 },
+  ];
+
+  const statusGradient = {
+    ok: 'linear-gradient(90deg, #34d399 0%, #10b981 100%)',
+    warn: 'linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%)',
+    fail: 'linear-gradient(90deg, #f87171 0%, #ef4444 100%)',
+  };
+
+  return (
+    <div className="p-6 rounded-xl bg-gray-900/50 border border-blue-500/20">
+      <div className="flex items-center gap-2 mb-4">
+        <Radio className="w-5 h-5 text-blue-400" />
+        <span className="text-blue-200 font-semibold text-sm">Wi-Fi Sniffer & Packet Analysis</span>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-4 text-xs text-gray-300">
+        {phases.map((p, idx) => (
+          <motion.div
+            key={p.label}
+            animate={{
+              borderColor: idx === step ? `rgba(59,130,246,0.6)` : 'rgba(75,85,99,0.5)',
+              backgroundColor: idx === step ? 'rgba(59,130,246,0.08)' : 'rgba(31,41,55,0.6)'
+            }}
+            className="p-2 rounded-lg border"
+          >
+            <div className="flex items-center gap-1 mb-1 text-gray-200">
+              <span style={{ color: colorMap[p.color] }}>{p.icon}</span>
+              <span>{p.label}</span>
+            </div>
+            <div className="h-1.5 rounded-full bg-gray-800 overflow-hidden">
+              <motion.div
+                animate={{ width: idx === step ? '100%' : '20%' }}
+                transition={{ duration: 0.8 }}
+                className="h-full"
+                style={{
+                  background: `linear-gradient(90deg, ${colorMap[p.color]} 0%, ${colorMap[p.color]} 100%)`
+                }}
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="space-y-2">
+        {packets.map((pkt, idx) => {
+          const isActive = step === 1 && idx === step;
+          const statusColor = pkt.status === "ok" ? "text-emerald-300" : pkt.status === "warn" ? "text-amber-300" : "text-red-300";
+          return (
+            <motion.div
+              key={pkt.id}
+              animate={{ borderColor: isActive ? 'rgba(168,85,247,0.5)' : 'rgba(75,85,99,0.6)' }}
+              className="p-3 rounded-lg bg-gray-800/60 border"
+            >
+              <div className="flex items-center justify-between text-[11px] text-gray-300 mb-1">
+                <span className="font-mono text-purple-200">{pkt.id}</span>
+                <span className={statusColor}>{pkt.status.toUpperCase()}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between text-[10px] text-gray-400">
+                    <span>Latency/Jitter</span>
+                    <span className="font-mono text-gray-200">{pkt.jitter} ms</span>
+                  </div>
+                  <div className="mt-1 h-2 rounded-full bg-gray-700 overflow-hidden">
+                    <motion.div
+                      animate={{ width: `${Math.min(100, pkt.jitter)}%` }}
+                      transition={{ duration: 0.6 }}
+                      className="h-full"
+                      style={{ background: statusGradient[pkt.status] }}
+                    />
+                  </div>
+                </div>
+                <div className="px-2 py-1 rounded bg-gray-900/70 border border-gray-700 text-[10px] text-gray-300">
+                  {step < 2 ? "Capture" : step === 2 ? "Trace" : "Fix"}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // OTA CLI Migration Animation
 function OTAMigrationDemo() {
   const [step, setStep] = useState(0);
@@ -923,7 +1110,9 @@ export {
   RVRTestDemo,
   LabOpsDemo,
   RemoteRouterDemo,
-  FTVLeadershipDemo
+  FTVLeadershipDemo,
+  DualClientSanityDemo,
+  SnifferAnalysisDemo
 };
 
 export default function AnimatedDiagram({ type }) {
@@ -944,6 +1133,10 @@ export default function AnimatedDiagram({ type }) {
       return <RemoteRouterDemo />;
     case 'ftv-leadership':
       return <FTVLeadershipDemo />;
+    case 'dual-client':
+      return <DualClientSanityDemo />;
+    case 'sniffer-analysis':
+      return <SnifferAnalysisDemo />;
     default:
       return null;
   }
