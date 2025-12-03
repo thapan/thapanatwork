@@ -92,10 +92,10 @@ export default function HeroSection({ onScrollToSection }) {
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
             {[
+              { icon: MonitorSmartphone, label: "Connected Consumer Devices", color: "text-purple-300", border: "border-purple-400/40" },
+              { icon: Crown, label: "Leadership", color: "text-amber-300", border: "border-amber-400/40" },
               { icon: Wifi, label: "Wireless", color: "text-cyan-300", border: "border-cyan-400/40" },
               { icon: Bot, label: "Automation", color: "text-emerald-300", border: "border-emerald-400/40" },
-              { icon: Crown, label: "Leadership", color: "text-amber-300", border: "border-amber-400/40" },
-              { icon: MonitorSmartphone, label: "Consumer Devices", color: "text-purple-300", border: "border-purple-400/40" },
             ].map((item) => (
               <span
                 key={item.label}

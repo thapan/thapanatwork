@@ -188,78 +188,141 @@ const qualcommProjects = [
 ];
 
 const amazonProjects = [
-  {
-    title: "Launch Leadership & Connectivity Ownership",
-    period: "2018-2025",
-    summary: "Connectivity launch owner across Fire TV sticks/cubes—Wi-Fi/BT/BLE/CoEx quality, OOBE/FFS, Live TV, and readiness gates.",
-    tech: ["Wi-Fi", "BT", "BLE", "CoEx", "FFS", "Live TV", "Automation", "SNS"],
-    problem: "Connectivity regressions and Live TV/OOBE risks threatened on-time launches and customer experience.",
-    solution: "Daily triage and sign-offs on Wi-Fi/BT/BLE/CoEx, Live TV validation, stability testbeds, and launch gates across generations.",
-    impact: "Zero critical launch escapes across 5 device launches with higher Live TV setup success and stable KPIs.",
-    link: "https://www.amazon.com/dp/B08XVYZ1Y5/ref=tsm_1_fb_lk?th=1",
-    imageUrl: fireTvImage,
-    hasDemo: true,
-    details: [
+{
+  title: "FTV Launch Leadership",
+  summary:
+    "Connectivity & launch execution lead for Fire TV 1P devices—driving readiness across Wi-Fi/BT/BLE/CoEx, OOBE/FFS, Live TV, QA gates, and global launch room alignment.",
+  tech: ["Wi-Fi", "BT", "BLE", "CoEx", "FFS", "Live TV", "Launch QA", "Program Mgmt"],
+  problem:
+    "Connectivity regressions, Live TV failures, and OOBE misflows threatened on-time launches and impacted customer experience.",
+  
+  solution:
+    "Led daily triage, regression gating, Live TV/OOBE readiness, QA sign-offs, and AWS launch room environment readiness. Aligned PMTs/TPMs and engineering on customer-impact metrics.",
+  
+  impact:
+    "Delivered 5+ Fire TV generations with zero critical connectivity escapes; improved Live TV setup KPIs; ensured consistent global launch execution.",
+
+  details: [
+    {
+      title: "Fire TV 1P NPI Launches",
+      description:
+        "Delivered Fire TV NPI launches (Cube, Stick, Smart TVs) by owning planning, validation, and release alignment with PMTs, TPMs, and engineering."
+    },
+    {
+      title: "Hotspot Connectivity Validation",
+      description:
+        "Owned hotspot onboarding and compliance validation for pilot regions—reducing regression load by 40% and enabling deployment readiness."
+    },
+     {
+      title: "ISP & VNO Integrations",
+      description:
+        "Implemented IPDR/VNO flows with ISPs to accelerate deployment readiness by 35% for hotspot programs."
+    },
+    {
+      title: "FTV Connectivity Regression Testing and Launch Gating",
+      description:
+        "Validated Wi-Fi/BT/BLE/CoEx functionality across Fire TV devices for different FOS versions; led regression cycles and launch readiness gating."
+    }
+  ]
+},
+{
+  title: "Automation & Tooling",
+  summary:
+    "Built end-to-end connectivity automation stack—automation frameworks, router/remote rigs, OTA pipelines, Jira tooling, lab scheduling tools, and self-healing execution flows.",
+  
+  tech: ["Automation", "AWS", "Python", "CLI", "Jira", "Routers", "Arduino", "Amazon Q", "EC2", "Lambda"],
+
+  problem:
+    "Manual regression workflows—router changes, remote latency tests, OTA provisioning, and defect logging—slowed sign-offs and introduced risk.",
+  
+  solution:
+    "Designed automation frameworks, AWS-powered tools, CLI pipelines, Jira integrations, KPI rigs, router UI automation, and self-healing prompts. Hardened frameworks with SDE collaboration.",
+  
+  impact:
+    "10× OTA scale, 70%+ reduction in manual defect work, 30% faster triage, 25% better lab utilization, and 3× automation usage across Smart TVs.",
+
+  details: [
       {
-        title: "Fire TV launches: connectivity owner",
-        description: "Connectivity lead for sticks/cubes—regressions, OOBE/FFS readiness, Live TV validation with Frank/Dektec.",
-        tech: ["Wi-Fi", "BT", "BLE", "CoEx", "FFS", "Live TV"],
-      },
-      {
-        title: "Device Launch Ownership",
-        description: "Launch readiness and validation gates across 5 device generations; zero critical escapes.",
-        tech: ["Automation", "Sanity", "WLAN", "SNS"],
-      },
-      {
-        title: "Wi-Fi Stability Testbeds",
-        description: "Long-run Wi-Fi stability labs simulating home routers/interference to prevent field issues (60% reduction).",
-        tech: ["WLAN", "Automation", "SNS", "RF"],
-      }
-    ]
-  },
-  {
-    title: "Automation & Tooling for Connectivity",
-    period: "2018-2023",
-    summary: "Built automation stack for remotes/routers, cloud OTA testing, and Jira MMS integration.",
-    tech: ["Automation", "Arduino", "Routers", "AWS", "Python", "CLI", "Jira"],
-    problem: "Manual router changes, remote latency checks, and defect logging slowed sign-offs and added risk.",
-    solution: "Arduino latency rig + router UI scripting, cloud-native OTA CLI workflows, and automated Jira MMS plugin.",
-    impact: "Release gating on latency KPIs, 10x OTA scale at 40% lower cost, and 95% defect accuracy with 15+ hrs/week saved.",
-    hasDemo: true,
-    demoType: "remote-router",
-    details: [
-      {
-        title: "Automation: remotes & routers",
-        description: "Arduino remote-latency rig and scripted router UI (TP-Link, Netgear) for rapid topology spins.",
-        tech: ["Automation", "Arduino", "Routers"],
-        demoType: "remote-router",
-      },
-      {
-        title: "OTA CLI Tool",
-        description: "Migrated OTA testing to AWS with CLI-driven provisioning and execution for scale/cost wins.",
-        tech: ["AWS", "Python", "Automation", "CLI"],
-        demoType: "ota-migration",
-      },
-      {
-        title: "Auto Jira MMS Plugin",
-        description: "Auto-create/update Jira tickets from MMS/test results for accurate, low-latency defect tracking.",
-        tech: ["Jira", "Python", "Automation", "AWS"],
-        demoType: "jira-mms",
-      }
-    ],
-  },
-  {
-    title: "RF Lab Ops & Booking",
-    period: "2018-2019",
-    summary: "RF lab stewardship with RVR/perf/stress setups and a booking tool to keep runs conflict-free.",
-    tech: ["RF", "RVR", "Perf", "Stress", "Scheduling"],
-    problem: "Shared labs caused conflicts and inconsistent environments for reproducible connectivity testing.",
-    solution: "Maintained shield rooms/RF boxes, calibrated rigs, and built a booking tool with conflict checks.",
-    impact: "Higher lab throughput and reproducible runs.",
-    hasDemo: true,
-    demoType: "lab-ops",
-    listStyle: "ordered",
-  }
+      title: "OTA CLI Tool Migration",
+      description:
+        "Migrated OTA testing to AWS CLI with IAM roles—80% fewer Lambda calls, faster CI/CD, and scalable testing."
+    },
+     {
+      title: "Auto Jira MMS Plugin",
+      description:
+        "AWS Lambda plugin to auto-create/update Jira defects from MMS/TestRail with 70%+ manual effort reduction."
+    },
+    {
+      title: "Automation Consumption for 1P NPI FTV devices",
+      description:
+        "Scaled automation usage from 30%→90% by onboarding Smart TVs and stabilizing suites with global QA teams."
+    },
+    {
+      title: "Self-Healing Test Execution Prompt",
+      description:
+        "Intelligent prompt to detect test context, execute suites, and auto-debug failures—cut triage by 30%."
+    },
+    {
+      title: "FTV Hotspot ZTP Automation Framework",
+      description:
+        "Built automation for zero-touch provisioning (ZTP) hotspot flows across multiple ISPs and regions."
+    },
+    {
+      title: "ConnQA Automation Framework",
+      description:
+        "Designed and maintained ConnQA automation for Wi-Fi/BLE validation across multiple Fire TV generations."
+    },
+    {
+      title: "Router Automation",
+      description:
+        "Developed automated 3P router UI flows to replicate real-world network conditions."
+    },
+    {
+      title: "Arduino KPI Test Rigs",
+      description:
+        "Created Arduino-driven KPI rigs to automate Wi-Fi/BLE performance measurement."
+    },
+    {
+      title: "EC2-Hosted Lab Booking Tool",
+      description:
+        "Built Flask-based lab booking system on AWS EC2—automating scheduling workflows and increasing lab utilization by 25%."
+    }
+  ]
+},
+{
+  title: "Lab Work",
+  summary:
+    "Maintained RF labs, automation labs, and device infrastructure—ensuring stable, calibrated, and conflict-free test environments.",
+  
+  tech: ["RF", "RVR", "Perf", "Stress", "Lab Ops", "Device Mgmt", "Shield Rooms","Host management"],
+
+  problem:
+    "Shared labs and inconsistent environment setups created conflicts, instability, and delays in automation/testing throughput.",
+  
+  solution:
+    "Managed shield rooms, RVR/perf rigs, interference scenarios, device setups, and lab health. Improved environment stability and scheduling reliability.",
+  
+  impact:
+    "Higher lab throughput, consistent test environments, fewer run conflicts, and faster automation efficiency.",
+
+  details: [
+    {
+      title: "Arlington Device Lab Stewardship",
+      description:
+        "Managed host/device setup, infra improvements, automation environment health, and device onboarding."
+    },
+    {
+      title: "FTV Hotspot Infrastructure Lab",
+      description:
+        "Maintined Testhouses and lab environments for hotspot connectivity validation."
+    },
+    {
+      title: "FTV Connectivity Lab",
+      description:
+        "Maintained RF chambers, RVR/perf rigs, and interference setups for connectivity validation."
+    }
+  ]
+}
 ];
 
 export default function ProjectsSection() {

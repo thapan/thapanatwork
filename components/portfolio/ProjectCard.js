@@ -32,15 +32,20 @@ export default function ProjectCard({ project, index }) {
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-1 rounded">
-                  {project.period}
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-1 rounded">
+                {project.period}
+              </span>
+              {project.latest && (
+                <span className="text-[10px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 px-2 py-1 rounded">
+                  Latest
                 </span>
-                {project.hasDemo && (
-                  <span className="flex items-center gap-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">
-                    <Play className="w-3 h-3" />
-                    Interactive Demo
-                  </span>
+              )}
+              {project.hasDemo && (
+                <span className="flex items-center gap-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">
+                  <Play className="w-3 h-3" />
+                  Interactive Demo
+                </span>
                 )}
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-purple-200 transition-colors">
@@ -60,6 +65,52 @@ export default function ProjectCard({ project, index }) {
           <p className="text-gray-400 mb-4 leading-relaxed">
             {project.summary}
           </p>
+
+          {project.highlights && project.highlights.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-2">
+              {project.highlights.map((item, i) => (
+                <div
+                  key={i}
+                  className="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-200 text-xs font-medium"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Problem / Solution / Impact preview */}
+          {(project.problem || project.solution || project.impact) && (
+            <div className="mb-4 grid gap-3 md:grid-cols-3">
+              {project.problem && (
+                <div className="p-3 rounded-lg bg-red-500/5 border border-red-500/20">
+                  <div className="flex items-center gap-2 mb-1 text-sm font-semibold text-red-300">
+                    <Target className="w-4 h-4" />
+                    <span>Problem</span>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed">{project.problem}</p>
+                </div>
+              )}
+              {project.solution && (
+                <div className="p-3 rounded-lg bg-yellow-500/5 border border-yellow-500/20">
+                  <div className="flex items-center gap-2 mb-1 text-sm font-semibold text-yellow-200">
+                    <Zap className="w-4 h-4" />
+                    <span>Solution</span>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed">{project.solution}</p>
+                </div>
+              )}
+              {project.impact && (
+                <div className="p-3 rounded-lg bg-green-500/5 border border-green-500/20">
+                  <div className="flex items-center gap-2 mb-1 text-sm font-semibold text-green-200">
+                    <TrendingUp className="w-4 h-4" />
+                    <span>Impact</span>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed">{project.impact}</p>
+                </div>
+              )}
+            </div>
+          )}
 
           {project.link && (
             <a
@@ -118,38 +169,6 @@ export default function ProjectCard({ project, index }) {
                   )}
 
                   {/* Problem */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-                      <Target className="w-5 h-5 text-red-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-red-400 mb-1">The Challenge</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{project.problem}</p>
-                    </div>
-                  </div>
-
-                  {/* Solution */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center">
-                      <Zap className="w-5 h-5 text-yellow-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-yellow-400 mb-1">The Solution</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{project.solution}</p>
-                    </div>
-                  </div>
-
-                  {/* Impact */}
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-green-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-green-400 mb-1">The Impact</h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">{project.impact}</p>
-                    </div>
-                  </div>
-
                   {/* Flow / Checklist */}
                   {project.flow && !project.demoType && (
                     <div className="mt-6 p-4 rounded-xl bg-gray-800/50 border border-gray-700/50">
