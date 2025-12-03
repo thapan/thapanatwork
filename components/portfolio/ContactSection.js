@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, FileText, Send } from 'lucide-react';
 
 export default function ContactSection() {
+  const resumeUrl = `${import.meta.env.BASE_URL}shubham_thapan_resume.pdf`;
   const [jdText, setJdText] = useState('');
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -94,7 +95,7 @@ export default function ContactSection() {
             variant="outline"
             className="border-gray-600 text-gray-300 hover:bg-gray-800/50 px-8 py-6 text-lg rounded-xl"
           >
-            <a href="#" download>
+            <a href={resumeUrl} download>
               <FileText className="mr-2 h-5 w-5" />
               Download Resume
             </a>
