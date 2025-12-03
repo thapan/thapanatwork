@@ -26,28 +26,6 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-gray-800/50">
         <div className="max-w-6xl mx-auto text-center space-y-3">
-          <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <a
-              href="mailto:shubhamthapan@gmail.com"
-              className="px-3 py-2 rounded-lg bg-gray-800/60 border border-gray-700 text-gray-200 hover:border-purple-500/50 hover:text-white transition"
-            >
-              Email
-            </a>
-            <a
-              href="https://www.linkedin.com/in/shubham-thapan"
-              target="_blank"
-              rel="noreferrer"
-              className="px-3 py-2 rounded-lg bg-gray-800/60 border border-gray-700 text-gray-200 hover:border-purple-500/50 hover:text-white transition"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="/#/resume"
-              className="px-3 py-2 rounded-lg bg-gray-800/60 border border-gray-700 text-gray-200 hover:border-purple-500/50 hover:text-white transition"
-            >
-              Resume
-            </a>
-          </div>
           <p className="text-gray-500 text-sm">
             © 2025 · Built with passion for quality engineering
           </p>
