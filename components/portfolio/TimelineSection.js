@@ -4,9 +4,21 @@ import { Building2, Tv, ChevronRight } from 'lucide-react';
 
 const timelineData = [
   {
+    company: "Open To",
+    icon: Building2,
+    color: "purple",
+    highlights: [
+      "Senior QA/Automation Lead",
+      "Automation Architect",
+      "Wireless/Connectivity QA Lead",
+      "TPM/PM for quality/automation tools",
+      "UI Developer for device/streaming experiences"
+    ]
+  },
+  {
     company: "Amazon",
     role: "Fire TV & Connectivity Engineer",
-    period: "2018 - 2025",
+    period: "2018 - Present",
     icon: Tv,
     color: "blue",
     highlights: [
