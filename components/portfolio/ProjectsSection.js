@@ -298,7 +298,7 @@ const amazonProjects = [
   ]
 },
 {
-  title: "Lab Qwnership",
+  title: "Lab Ownership",
   summary:
     "Maintained RF labs, automation labs, and device infrastructure—ensuring stable, calibrated, and conflict-free test environments.",
   
