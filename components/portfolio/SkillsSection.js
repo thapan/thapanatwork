@@ -107,27 +107,27 @@ export default function SkillsSection() {
       icon: Wifi
     },
     {
-      title: "Automation & CLI",
+      title: "Automation",
       anchor: "Projects: Automation & Tooling",
-      items: ["Python", "Perl", "Bash", "Arduino rigs", "Router UI scripting", "CLI/SSH debug"],
+      items: ["Python", "Selenium","UiAutomator","Appium", "Bash", "Arduino rigs", "CLI", "Linux", "MacOS"],
       icon: Terminal
     },
     {
       title: "Cloud & Pipelines",
       anchor: "Projects: Dial-up/OTA CLI, Jira MMS, Hotspot",
-      items: ["AWS (Lambda/Step Functions/EC2)", "Docker", "REST APIs", "Jenkins", "Git/GitHub"],
+      items: ["AWS (Lambda/Step Functions/EC2)", "REST APIs", "Jenkins", "Git/GitHub"],
       icon: Cloud
     },
     {
       title: "QA & Launch Ops",
       anchor: "Projects: Launch Leadership",
-      items: ["Jira", "Prism", "Salesforce IR", "Launch gates/bug bars", "Status/KPI dashboards"],
+      items: ["Jira", "Splunk", "Launch gates/bug bars", "Status/KPI dashboards"],
       icon: Bug
     },
     {
       title: "Lab Ops",
       anchor: "Projects: Lab Ops & Arlington",
-      items: ["Shield boxes", "Attenuators", "Lab booking", "Mesh/interop labs", "Perf/stability rigs"],
+      items: ["Host", "Shield boxes", "Attenuators", "Lab booking", "Mesh/interop labs", "Perf/stability rigs"],
       icon: Server
     },
     {
