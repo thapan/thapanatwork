@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPageUrl } from './utils';
-import { Menu, X, Briefcase, Clock, Code2, Mail } from 'lucide-react';
+import { Briefcase, Clock, Code2, Mail, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -101,7 +101,7 @@ export default function Layout({ children }) {
               <span className="text-white font-semibold hidden sm:block">Portfolio</span>
             </Link>
 
-            {/* Desktop Nav + Actions */}
+            {/* Nav */}
             <div className="hidden md:flex items-center gap-2">
               {navItems.map((item) => (
                 <a
@@ -129,36 +129,36 @@ export default function Layout({ children }) {
             </Button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-gray-900/95 backdrop-blur-xl border-b border-gray-800/50"
-            >
-              <div className="px-6 py-4 space-y-2">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href);
-                    }}
-                    className="flex items-center gap-3 w-full px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200"
-                  >
-                    <item.icon className="w-5 h-5 text-purple-400" />
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-gray-900/95 backdrop-blur-xl border-b border-gray-800/50"
+          >
+            <div className="px-6 py-4 space-y-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                  className="flex items-center gap-3 w-full px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200"
+                >
+                  <item.icon className="w-5 h-5 text-purple-400" />
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Page Content */}
       <main>
