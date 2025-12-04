@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Briefcase, Clock, Mail, FileText, PhoneCall, Wifi, Bot, Crown, MonitorSmartphone, BadgeCheck } from 'lucide-react';
+import { ChevronDown, Briefcase, Clock, Mail, Wifi, Bot, BadgeCheck } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import ParticleBackground from './ParticleBackground';
 import headshot from '../../assets/mypic.jpeg';
@@ -13,17 +13,13 @@ export default function HeroSection({ onScrollToSection }) {
     "Product QA Lead",
     "WLAN QA Engineer"
   ];
-  const achievements = [
-    "Automation modernization + velocity gains",
-    "Trusted feedback and zero critical escapes across FTV launches"
-  ];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
     const current = typingPhrases[phraseIndex];
     if (charIndex < current.length) {
-      const timer = setTimeout(() => setCharIndex((c) => c + 1), 45);
+      const timer = setTimeout(() => setCharIndex((c) => c + 1), 40);
       return () => clearTimeout(timer);
     }
     const pause = setTimeout(() => {
@@ -31,7 +27,7 @@ export default function HeroSection({ onScrollToSection }) {
       setPhraseIndex((i) => (i + 1) % typingPhrases.length);
     }, 1200);
     return () => clearTimeout(pause);
-  }, [charIndex, phraseIndex]);
+  }, [charIndex, phraseIndex, typingPhrases]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -68,7 +64,7 @@ export default function HeroSection({ onScrollToSection }) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.6 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight text-center md:text-left"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight text-center md:text-left leading-[0.95]"
             >
               Hi, I&apos;m <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">Shubham</span>
             </motion.h1>
@@ -78,13 +74,13 @@ export default function HeroSection({ onScrollToSection }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.6 }}
-            className="text-2xl md:text-4xl text-gray-200 mb-6 font-light text-center md:text-left"
-            aria-label="Typing introduction"
+            className="text-2xl md:text-3xl text-gray-200 mb-6 font-light text-center md:text-left"
+            aria-label="Professional headline"
           >
             I&apos;m a{" "}
-            <span className="font-semibold text-blue-300 min-w-[260px] inline-block text-left">
+            <span className="font-semibold text-blue-300 min-w-[260px] inline-flex items-center justify-start">
               {typingPhrases[phraseIndex].slice(0, charIndex)}
-              <span className="border-r-2 border-pink-400 animate-pulse ml-0.5" />
+              <span className="border-r-2 border-pink-400 animate-pulse ml-1 h-6 inline-block" />
             </span>
           </motion.div>
 
@@ -92,40 +88,43 @@ export default function HeroSection({ onScrollToSection }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-4 max-w-3xl mx-auto"
-          >
-            {[
-              { icon: Clock, label: "10+ yrs QA/Automation", color: "text-emerald-300", border: "border-emerald-400/40" },
-              { icon: MonitorSmartphone, label: "Connected Consumer Devices", color: "text-purple-300", border: "border-purple-400/40" },
-              { icon: Crown, label: "Leadership", color: "text-amber-300", border: "border-amber-400/40" },
-              { icon: Wifi, label: "Wireless", color: "text-cyan-300", border: "border-cyan-400/40" },
-              { icon: Bot, label: "Automation", color: "text-emerald-300", border: "border-emerald-400/40" },
-            ].map((item) => (
-              <span
-                key={item.label}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/60 border ${item.border} text-xs sm:text-sm text-gray-100`}
-              >
-                <item.icon className={`w-4 h-4 ${item.color}`} />
-                <span className="whitespace-nowrap">{item.label}</span>
-              </span>
-            ))}
-          </motion.div>
+            className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto font-normal"
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 max-w-3xl mx-auto"
+            className="flex flex-wrap justify-center gap-3 mb-10"
           >
-            {achievements.map((item, idx) => (
-              <span
-                key={idx}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/70 border border-purple-400/30 text-xs sm:text-[13px] text-white/90"
-              >
-                <BadgeCheck className="w-3 h-3 text-emerald-300" />
-                <span className="text-left">{item}</span>
-              </span>
-            ))}
+            <div className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-gray-900/70 border border-purple-400/30 shadow-sm">
+              <Clock className="w-4 h-4 text-emerald-300" />
+              <div className="text-left">
+                <div className="text-sm font-semibold text-white">10+ years</div>
+                <div className="text-xs text-gray-300">leadership & automation</div>
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-gray-900/70 border border-purple-400/30 shadow-sm">
+              <BadgeCheck className="w-4 h-4 text-purple-300" />
+              <div className="text-left">
+                <div className="text-sm font-semibold text-white">Connected Consumer Devices</div>
+                <div className="text-xs text-gray-300">Fire TV, TVs, living room</div>
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-gray-900/70 border border-purple-400/30 shadow-sm">
+              <Wifi className="w-4 h-4 text-cyan-300" />
+              <div className="text-left">
+                <div className="text-sm font-semibold text-white">Wireless/RF</div>
+                <div className="text-xs text-gray-300">RVR, roaming, captures</div>
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-gray-900/70 border border-purple-400/30 shadow-sm">
+              <Bot className="w-4 h-4 text-emerald-300" />
+              <div className="text-left">
+                <div className="text-sm font-semibold text-white">Automation</div>
+                <div className="text-xs text-gray-300">Frameworks & CI at scale</div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div

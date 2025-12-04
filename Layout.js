@@ -168,10 +168,11 @@ export default function Layout({ children }) {
       {/* Floating contact button */}
       <Button
         onClick={() => handleNavClick('#contact')}
-        className="fixed bottom-6 right-6 z-40 bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/30 px-4 py-3 rounded-full hidden sm:inline-flex items-center gap-2"
+        title="Contact"
+        className="fixed bottom-6 right-6 z-40 bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/30 w-12 h-12 rounded-full hidden sm:inline-flex items-center justify-center"
       >
-        <Mail className="w-4 h-4" />
-        Contact
+        <Mail className="w-4 h-4" aria-hidden="true" />
+        <span className="sr-only">Contact</span>
       </Button>
 
       {/* Back to top */}

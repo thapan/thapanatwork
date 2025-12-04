@@ -5,6 +5,7 @@ import StatsSection from '@/components/portfolio/StatsSection';
 import ProjectsSection from '@/components/portfolio/ProjectsSection';
 import SkillsSection from '@/components/portfolio/SkillsSection';
 import ContactSection from '@/components/portfolio/ContactSection';
+import ChatBotWidget from '@/components/portfolio/ChatBotWidget';
 
 export default function Home() {
   const scrollToSection = (sectionId) => {
@@ -22,6 +23,7 @@ export default function Home() {
       <ProjectsSection />
       <SkillsSection />
       <ContactSection />
+      <ChatBotWidget />
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-gray-800/50">
