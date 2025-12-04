@@ -14,7 +14,7 @@ export default function ContactSection() {
     const text = jdText.toLowerCase();
     const keywords = [
       // Core QA/automation
-      "automation", "framework", "python", "perl", "bash", "jenkins", "ci", "regression", "test plan", "test cases", "nightly",
+      "Automation", "framework", "python", "perl", "bash", "jenkins", "ci", "regression", "test plan", "test cases", "nightly",
       "selenium", "api", "ui automation", "api automation", "soapui", "playback", "streaming", "prime video",
       "ios", "android", "web", "living room", "fire tv", "mobile testing",
       // Wi-Fi / networking
