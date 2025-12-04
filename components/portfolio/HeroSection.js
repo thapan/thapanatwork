@@ -92,7 +92,7 @@ export default function HeroSection({ onScrollToSection }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-3 mb-4"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-4 max-w-3xl mx-auto"
           >
             {[
               { icon: Clock, label: "10+ yrs QA/Automation", color: "text-emerald-300", border: "border-emerald-400/40" },
@@ -103,10 +103,10 @@ export default function HeroSection({ onScrollToSection }) {
             ].map((item) => (
               <span
                 key={item.label}
-                className={`inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gray-900/60 border ${item.border} text-sm text-gray-100`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/60 border ${item.border} text-xs sm:text-sm text-gray-100`}
               >
                 <item.icon className={`w-4 h-4 ${item.color}`} />
-                {item.label}
+                <span className="whitespace-nowrap">{item.label}</span>
               </span>
             ))}
           </motion.div>
@@ -115,15 +115,15 @@ export default function HeroSection({ onScrollToSection }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-3 mb-8"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 max-w-3xl mx-auto"
           >
             {achievements.map((item, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gray-900/70 border border-purple-400/30 text-[12px] text-white/90"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900/70 border border-purple-400/30 text-xs sm:text-[13px] text-white/90"
               >
                 <BadgeCheck className="w-3 h-3 text-emerald-300" />
-                <span className="whitespace-normal text-left">{item}</span>
+                <span className="text-left">{item}</span>
               </span>
             ))}
           </motion.div>
