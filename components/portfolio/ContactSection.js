@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, FileText, Send } from 'lucide-react';
+import { Mail, FileText, Send } from 'lucide-react';
+
+const LinkedInIcon = ({ className }) => (
+  <svg
+    className={className}
+    role="img"
+    aria-label="LinkedIn"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.941v5.665H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.604 0 4.269 2.372 4.269 5.456v6.285zM5.337 7.433a2.062 2.062 0 1 1 0-4.123 2.062 2.062 0 0 1 0 4.123zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
 
 export default function ContactSection() {
   const resumeUrl = `${import.meta.env.BASE_URL}shubham_resume.pdf`;
@@ -85,7 +98,7 @@ export default function ContactSection() {
             className="border-blue-500/50 text-blue-300 hover:bg-blue-500/10 px-8 py-6 text-lg rounded-xl"
           >
             <a href="https://www.linkedin.com/in/shubham-thapan" target="_blank" rel="noopener noreferrer">
-              <Linkedin className="mr-2 h-5 w-5" />
+              <LinkedInIcon className="mr-2 h-5 w-5" />
               LinkedIn
             </a>
           </Button>

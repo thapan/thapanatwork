@@ -13,8 +13,10 @@ export default defineConfig({
   // Match GitHub Pages repo name for correct asset paths
   base: "/thapanatwork/",
   esbuild: {
+    // Treat .js files as JSX across the project
     loader: "jsx",
-    include: /.*\.[jt]sx?$/,
+    jsx: "automatic",
+    include: /\.[jt]sx?$/,
     exclude: [/node_modules/, /vite\.config\.js/],
   },
   resolve: {
