@@ -18,7 +18,7 @@ const stats = [
     iconColor: "text-emerald-300",
     cardGradient: "from-emerald-500/20 to-cyan-500/20",
     valueGradient: "from-emerald-300 to-cyan-300",
-    valueClass: "text-3xl sm:text-[34px] md:text-[40px]"
+    valueClass: "text-2xl sm:text-3xl md:text-4xl"
   },
   {
     icon: Zap,
@@ -67,7 +67,7 @@ export default function StatsSection() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", delay: index * 0.1 + 0.2 }}
-                className={`${stat.valueClass || 'text-3xl sm:text-4xl md:text-5xl'} font-bold leading-tight bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent mb-2`}
+                className={`${stat.valueClass || 'text-3xl sm:text-4xl md:text-5xl'} font-bold leading-tight tracking-tight bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent mb-2 break-words`}
               >
                 {stat.value}
               </motion.div>
