@@ -28,10 +28,14 @@ export default function Layout({ children }) {
 
   const handleNavClick = (href) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const scrollToSection = () => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    // Defer until after menu closes so overlay doesn't block scroll on mobile
+    requestAnimationFrame(() => setTimeout(scrollToSection, 50));
   };
 
   return (
@@ -89,13 +93,17 @@ export default function Layout({ children }) {
             {/* Desktop Nav + Actions */}
             <div className="hidden md:flex items-center gap-2">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.label}
-                  onClick={() => handleNavClick(item.href)}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.href);
+                  }}
                   className="px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200"
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
             </div>
 
@@ -122,14 +130,18 @@ export default function Layout({ children }) {
             >
               <div className="px-6 py-4 space-y-2">
                 {navItems.map((item) => (
-                  <button
+                  <a
                     key={item.label}
-                    onClick={() => handleNavClick(item.href)}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
                     className="flex items-center gap-3 w-full px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200"
                   >
                     <item.icon className="w-5 h-5 text-purple-400" />
                     {item.label}
-                  </button>
+                  </a>
                 ))}
               </div>
             </motion.div>
