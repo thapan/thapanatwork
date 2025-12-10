@@ -9,9 +9,10 @@ export default function HeroSection({ onScrollToSection }) {
   const resumeLink = 'mailto:shubhamthapan@gmail.com?subject=Resume%20request%20%2F%20Role%20discovery';
   const bookLink = 'mailto:shubhamthapan@gmail.com?subject=Schedule%20a%2015%20min%20intro';
   const typingPhrases = [
+    "Technical Program Owner",
     "Automation Architect",
     "Product QA Lead",
-    "WLAN QA Engineer"
+    "WLAN QA Engineer"  
   ];
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
